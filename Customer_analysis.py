@@ -54,3 +54,20 @@ def plot_customer_distribution_by_year(df):
     plt.savefig('customer_distribution_by_year.png', dpi=300, bbox_inches='tight')
     plt.close()
     print("Created customer distribution by year plot")
+
+
+def plot_monthly_subscriptions(df):
+    """Plot monthly subscriptions over time"""
+    monthly_data = df.groupby('Subscription Year-Month').size()
+    
+    plt.figure(figsize=(16, 8))
+    monthly_data.plot(kind='line', marker='o', color='royalblue', linewidth=2.5)
+    
+    plt.title('Monthly Customer Subscriptions Over Time', fontsize=18)
+    plt.xlabel('Year-Month', fontsize=14)
+    plt.ylabel('Number of Subscriptions', fontsize=14)
+    plt.grid(True, alpha=0.3)
+    plt.tight_layout()
+    plt.savefig('monthly_subscriptions.png', dpi=300)
+    plt.close()
+    print("Created monthly subscriptions plot")
