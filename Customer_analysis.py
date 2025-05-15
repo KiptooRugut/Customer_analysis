@@ -71,3 +71,18 @@ def plot_monthly_subscriptions(df):
     plt.savefig('monthly_subscriptions.png', dpi=300)
     plt.close()
     print("Created monthly subscriptions plot")
+
+def plot_top_countries(df, n=15):
+    """Plot top countries by customer count"""
+    top_countries = df['Country'].value_counts().head(n)
+    
+    plt.figure(figsize=(14, 8))
+    sns.barplot(x=top_countries.values, y=top_countries.index, palette='rocket')
+    
+    plt.title(f'Top {n} Countries by Customer Count', fontsize=18)
+    plt.xlabel('Number of Customers', fontsize=14)
+    plt.ylabel('Country', fontsize=14)
+    plt.tight_layout()
+    plt.savefig('top_countries.png', dpi=300)
+    plt.close()
+    print(f"Created top {n} countries plot")
