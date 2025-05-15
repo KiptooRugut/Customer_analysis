@@ -104,3 +104,14 @@ def plot_year_distribution_by_country(df, n=10):
     plt.title(f'Subscription Year Distribution by Country (Top {n})', fontsize=18)
     plt.xlabel('Subscription Year', fontsize=14)
     plt.ylabel('Country', fontsize=14)
+
+    # Set proper year ticks
+    years = sorted(df['Subscription Year'].unique())
+    ax.set_xticks(years)
+    ax.set_xticklabels(years)
+    ax.yaxis.grid(True, linestyle='--', alpha=0.4)
+    
+    plt.tight_layout()
+    plt.savefig('year_distribution_by_country.png', dpi=300, bbox_inches='tight')
+    plt.close()
+    print(f"Created year distribution by country plot (top {n})")
