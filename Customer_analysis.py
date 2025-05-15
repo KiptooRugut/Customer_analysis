@@ -115,3 +115,23 @@ def plot_year_distribution_by_country(df, n=10):
     plt.savefig('year_distribution_by_country.png', dpi=300, bbox_inches='tight')
     plt.close()
     print(f"Created year distribution by country plot (top {n})")
+
+
+def main():
+    print("Customer Data Analysis\n" + "="*50 + "\n")
+    
+    # Configure plot settings
+    configure_plot_settings()
+    
+    # Load and prepare data
+    df = load_and_prepare_data()  # Removed the argument since we hardcoded the filename
+    if df is None:
+        return
+    
+    # Create visualizations
+    plot_customer_distribution_by_year(df)
+    plot_monthly_subscriptions(df)
+    plot_top_countries(df)
+    plot_year_distribution_by_country(df)
+    
+    print("\nAnalysis complete! Check the generated PNG files for visualizations.")
