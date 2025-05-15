@@ -135,3 +135,7 @@ def main():
     plot_year_distribution_by_country(df)
     
     print("\nAnalysis complete! Check the generated PNG files for visualizations.")
+
+
+if __name__ == "__main__":
+    main()
