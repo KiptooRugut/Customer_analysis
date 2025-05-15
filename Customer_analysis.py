@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from datetime import datetime
 
+
 def configure_plot_settings():
     """Configure matplotlib and seaborn settings for consistent visualizations"""
     sns.set_style("whitegrid")
@@ -18,7 +19,7 @@ def configure_plot_settings():
 def load_and_prepare_data():
     """Load and prepare the customer data"""
     try:
-        df = pd.read_csv('data/customers-1000.csv')  # Fixed: Directly specify filename
+        df = pd.read_csv('data/customers-1000.csv')  # Specify filename
         print("Dataset loaded successfully!")
         
         # Convert and extract date features
