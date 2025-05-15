@@ -86,3 +86,21 @@ def plot_top_countries(df, n=15):
     plt.savefig('top_countries.png', dpi=300)
     plt.close()
     print(f"Created top {n} countries plot")
+
+def plot_year_distribution_by_country(df, n=10):
+    """Plot subscription year distribution by country"""
+    plt.figure(figsize=(14, 8))
+    
+    # Convert to integer years
+    df['Subscription Year'] = df['Subscription Year'].astype(int)
+    top_countries = df['Country'].value_counts().head(n).index
+    
+    ax = sns.boxplot(data=df, 
+                    x='Subscription Year', 
+                    y='Country',
+                    order=top_countries,
+                    palette='Set3')
+    
+    plt.title(f'Subscription Year Distribution by Country (Top {n})', fontsize=18)
+    plt.xlabel('Subscription Year', fontsize=14)
+    plt.ylabel('Country', fontsize=14)
