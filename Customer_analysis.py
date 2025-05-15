@@ -33,3 +33,24 @@ def load_and_prepare_data():
     except Exception as e:
         print(f"Error loading dataset: {e}")
         return None
+    
+def plot_customer_distribution_by_year(df):
+    """Plot customer distribution by subscription year"""
+    plt.figure(figsize=(14, 8))
+    ax = sns.countplot(data=df, x='Subscription Year', palette='viridis')
+    
+    # Add value labels
+    for p in ax.patches:
+        ax.annotate(f'{p.get_height()}', 
+                   (p.get_x() + p.get_width()/2., p.get_height()), 
+                   ha='center', va='center', 
+                   xytext=(0, 10), 
+                   textcoords='offset points')
+    
+    plt.title('Customer Distribution by Subscription Year', fontsize=18)
+    plt.xlabel('Subscription Year', fontsize=14)
+    plt.ylabel('Number of Customers', fontsize=14)
+    plt.tight_layout()
+    plt.savefig('customer_distribution_by_year.png', dpi=300, bbox_inches='tight')
+    plt.close()
+    print("Created customer distribution by year plot")
